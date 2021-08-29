@@ -51,6 +51,9 @@ export class ForecastDetailComponent implements OnInit {
                 this.forecast5Days.push(aux);
               });
             }
+            if (this.forecast5Days.length > 0) {
+              this.forecast5Days.shift();
+            }
           }
         },
         err => {
