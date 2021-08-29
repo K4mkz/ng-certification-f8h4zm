@@ -22,9 +22,11 @@ Add location
         <a [routerLink]="['/forecast', forecast.zipCode]">Show 5-day forecast for {{forecast.name}}</a>
       </p>
     </div>
+    <div class="align-center">
+      <img [src]="forecast.conditionImgUrl">
+    </div>
     <div>
       <span class="close" (click)="removeForecast(i)">×</span>
-      <img src="https://www.angulartraining.com/images/weather/sun.png">
     </div>
   </div>
 </div>

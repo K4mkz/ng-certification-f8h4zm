@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'forecast/:zipcode',
     component: ForecastDetailComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/'
   }
 ];
 

@@ -32,11 +32,16 @@ export class HomeComponent implements OnInit {
     this.forecastService.getForecastByZipCode(this.zipCode).subscribe(
       res => {
         if (res !== null) {
+          console.log(res);
           if (this.forecastList.find(x => x.zipCode == this.zipCode) == null) {
             let forecast = new Forecast();
             forecast.name = res.name;
             forecast.zipCode = this.zipCode;
             if (res.weather.length > 0) {
+              forecast.conditionImgUrl =
+                'https://openweathermap.org/img/wn/' +
+                res.weather[0].icon +
+                '@4x.png';
               forecast.condition = res.weather[0].main;
             }
             forecast.currentTemp = res.main.temp;

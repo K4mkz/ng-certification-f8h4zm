@@ -1,50 +1,21 @@
-<div class="panel panel-default">
+<div class="panel panel-default" *ngIf="cityName">
   <div class="panel-heading">
-    <h3 class="panel-title">5-day forecast for Rancho Cordova</h3>
+    <h3 class="panel-title">5-day forecast for {{cityName}}</h3>
 
   </div>
   <ul class="list-group">
     <!---->
-    <li class="list-group-item">
-      Monday, Mar 23:
-      Rain
-      - Min: 45
-      - Max: 59
+    <li class="list-group-item" *ngFor="let forecast of forecast5Days">
+      {{forecast.date | date: 'EEEE, MMM d'}}:
+      {{forecast.condition}}
+      - Min: {{forecast.minTemp}}
+      - Max: {{forecast.maxTemp}}
 
-      <img class="icon" src="https://www.angulartraining.com/images/weather/rain.png">
-    </li>
-    <li class="list-group-item">
-      Tuesday, Mar 24:
-      Rain
-      - Min: 39
-      - Max: 52
-
-      <img class="icon" src="https://www.angulartraining.com/images/weather/sun.png">
-    </li>
-    <li class="list-group-item">
-      Wednesday, Mar 25:
-      Rain
-      - Min: 36
-      - Max: 54
-
-      <img class="icon" src="https://www.angulartraining.com/images/weather/rain.png">
-    </li>
-    <li class="list-group-item">
-      Thursday, Mar 26:
-      Clear
-      - Min: 37
-      - Max: 56
-
-      <img class="icon" src="https://www.angulartraining.com/images/weather/clouds.png">
-    </li>
-    <li class="list-group-item">
-      Friday, Mar 27:
-      Clear
-      - Min: 40
-      - Max: 57
-
-      <img class="icon" src="https://www.angulartraining.com/images/weather/snow.png">
+      <img class="icon" [src]="forecast.conditionImgUrl">
     </li>
   </ul>
 </div>
-<button class="btn btn-success" tabindex="0" id="mainPageBtn">&lt; Back to main page</button>
+<div class="custom-pad" *ngIf="alert">
+  <span class="error-alert">{{alert}}</span>
+</div>
+<button routerLink='/' class="btn btn-success" tabindex="0" id="mainPageBtn">&lt; Back to main page</button>
